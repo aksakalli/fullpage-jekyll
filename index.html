@@ -1,0 +1,46 @@
+---
+---
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+{% include head.html %}
+<body>
+
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarCollapse">
+    <ul class="navbar-nav mx-auto" id="menu">
+      <a class="navbar-brand" href="#">{{site.title}}</a>
+      {% for tab in site.tabs %}
+        {% capture id %}{{ tab.id | remove:'/' | remove:'tabs' | downcase }}{% endcapture %}
+        <li class="nav-item" data-menuanchor="{{id}}">
+          <a class="nav-link" href="#{{id}}">{{tab.title}}</a>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+</nav>
+
+<script type="text/javascript">
+var anchors = [
+{% for tab in site.tabs %}
+  {% capture id %}{{ tab.id | remove:'/' | remove:'tabs' | downcase }}{% endcapture %}
+  '{{id}}'{% if forloop.last == false %},{% endif %}
+{% endfor %}
+]
+</script>
+
+<div id="fullpage">
+  {% for tab in site.tabs %}
+    {% capture id %}{{ tab.id | remove:'/' | remove:'tabs' | downcase }}{% endcapture %}
+    <div class="section tab-base {{tab.class}}">
+      {{ tab.content }}
+    </div>
+  {% endfor %}
+</div>
+
+
+{% include js_files.html %}
+</body>
+</html>

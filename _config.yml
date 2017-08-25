@@ -1,0 +1,23 @@
+title: fullPage Jekyll
+description: >
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+  sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+  enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
+  ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit
+  in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+
+baseurl: "/fullpage-jekyll" # the subpath of your site, e.g. /blog/
+# google_analytics:
+
+# Build settings
+markdown: kramdown
+highlighter: rouge
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+
+collections:
+  tabs:
+    output: false

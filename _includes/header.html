@@ -1,0 +1,50 @@
+
+
+
+<div class="row">
+
+  <div class="col-md-8">
+    <a href="/">
+      <img class="float-left rounded mr-3" src="/images/me.png" alt="{{ site.title | escape }}">
+    </a>
+    <h4 class="mt-0">
+      <a href="/" class="text-gray-dark">
+        {{ site.title | escape }}
+      </a>
+    </h4>
+    <p>
+      <span class="text-muted">{{ site.description | escape }}</span>
+    </p>
+
+
+  </div>
+  <div class="col-md-4">
+    <ul class="nav nav-pills float-md-right justify-content-center">
+      {% if site.github_username %}
+      <li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/{{ site.github_username }}">
+            <i class="fa fa-github" aria-hidden="true"></i>
+          </a>
+        </li>
+      </li>
+      {% endif %}
+
+      {% for page in site.pages %}
+        {% if page.title %}
+        <li class="nav-item">
+          <a class="nav-link" href="{{ page.url | prepend: site.baseurl }}">{{ page.title }}</a>
+        </li>
+        {% endif %}
+      {% endfor %}
+
+      <!-- <li class="nav-item">
+        <a class="nav-link" href="#">About</a>
+      </li> -->
+    </ul>
+  </div>
+</div>
+
+<!-- <a href="#" class="btn btn-info btn-sm"><i class="fa fa-github" aria-hidden="true"></i> GitHub</a>
+<a href="#" class="btn btn-info btn-sm"><i class="fa fa-twitter" aria-hidden="true"></i> Twitter</a>
+<a href="#" class="btn btn-info btn-sm"><i class="fa fa-feed" aria-hidden="true"></i> RSS</a> -->
