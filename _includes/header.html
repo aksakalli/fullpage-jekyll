@@ -1,50 +1,25 @@
-
-
-
-<div class="row">
-
-  <div class="col-md-8">
-    <a href="/">
-      <img class="float-left rounded mr-3" src="/images/me.png" alt="{{ site.title | escape }}">
-    </a>
-    <h4 class="mt-0">
-      <a href="/" class="text-gray-dark">
-        {{ site.title | escape }}
-      </a>
-    </h4>
-    <p>
-      <span class="text-muted">{{ site.description | escape }}</span>
-    </p>
-
-
-  </div>
-  <div class="col-md-4">
-    <ul class="nav nav-pills float-md-right justify-content-center">
-      {% if site.github_username %}
-      <li>
-        <li class="nav-item">
-          <a class="nav-link" href="https://github.com/{{ site.github_username }}">
-            <i class="fa fa-github" aria-hidden="true"></i>
-          </a>
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarCollapse">
+    <ul class="navbar-nav mx-auto" id="menu">
+      <a class="navbar-brand" href="#">{{site.title}}</a>
+      {% for tab in site.tabs %}
+        {% capture id %}{{ tab.id | remove:'/' | remove:'tabs' | downcase }}{% endcapture %}
+        <li class="nav-item" data-menuanchor="{{id}}">
+          <a class="nav-link" href="#{{id}}">{{tab.title}}</a>
         </li>
-      </li>
-      {% endif %}
-
-      {% for page in site.pages %}
-        {% if page.title %}
-        <li class="nav-item">
-          <a class="nav-link" href="{{ page.url | prepend: site.baseurl }}">{{ page.title }}</a>
-        </li>
-        {% endif %}
       {% endfor %}
-
-      <!-- <li class="nav-item">
-        <a class="nav-link" href="#">About</a>
-      </li> -->
     </ul>
   </div>
-</div>
+</nav>
 
-<!-- <a href="#" class="btn btn-info btn-sm"><i class="fa fa-github" aria-hidden="true"></i> GitHub</a>
-<a href="#" class="btn btn-info btn-sm"><i class="fa fa-twitter" aria-hidden="true"></i> Twitter</a>
-<a href="#" class="btn btn-info btn-sm"><i class="fa fa-feed" aria-hidden="true"></i> RSS</a> -->
+<script type="text/javascript">
+var anchors = [
+{% for tab in site.tabs %}
+  {% capture id %}{{ tab.id | remove:'/' | remove:'tabs' | downcase }}{% endcapture %}
+  '{{id}}'{% if forloop.last == false %},{% endif %}
+{% endfor %}
+]
+</script>
